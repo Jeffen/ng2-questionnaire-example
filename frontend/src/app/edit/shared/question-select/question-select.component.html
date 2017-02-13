@@ -1,0 +1,5 @@
+<div class="question-controls ui vertical menu">
+    <a *ngFor="let control of controls" class="item" (click)="onAddQuestion(control)">
+        <i [ngClass]="control.iconClass"></i> {{control.label}}
+    </a>
+</div>

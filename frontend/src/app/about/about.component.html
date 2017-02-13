@@ -1,0 +1,17 @@
+<div class="sd-help ui container">
+    <div class="ui styled fluid accordion">
+        <div *ngFor="let item of items;">
+            <div class="title">
+                <i class="dropdown icon"></i> {{ item?.text }}
+            </div>
+            <div class="content ui grid">
+                <div class="four wide column">
+                    <img [src]="item.icon" alt="{{item.text}}" class="ui img">
+                </div>
+                <div class="twelve wide column">
+                    {{ item?.desc }}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

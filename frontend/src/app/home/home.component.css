@@ -1,0 +1,15 @@
+.img {
+    width: 100%;
+}
+
+.h3 {
+    display: inline-block;
+}
+
+.footer {
+    margin-top: 20px;
+}
+
+.ui.button {
+    min-width: 150px;
+}

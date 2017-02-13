@@ -1,0 +1,11 @@
+<div class="ui secondary menu nav navbar-nav">
+    <a class="item" [routerLink]="['/']" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">首页</a>
+    <a class="item">我的问卷</a>
+    <a class="item" [routerLink]="['/admin/about']" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">帮助</a>
+
+    <div class="right menu nav navbar-right">
+        <a class="item" [routerLink]="['/admin/edit/0']" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">创建新问卷</a>
+        <a class="item">注册</a>
+        <a class="item">登录</a>
+    </div>
+</div>
