@@ -14,8 +14,12 @@ export class EditComponent implements OnInit {
   private id: string;
 
   constructor() {
+  }
+
+  ngOnInit() {
+    $('.menu .item').tab();
     this.questionnaire = {
-      title: '',
+      title: 'Questionnaire Initialized',
       starter: '',
       ending: '',
       state: QuestionnaireState.Created,
@@ -23,12 +27,7 @@ export class EditComponent implements OnInit {
     };
   }
 
-  ngOnInit() {
-    $('.menu .item').tab();
-  }
-
   onAddQuestion(type: QuestionType) {
-    console.log('传入问题类型：', type);
     switch (type) {
       case QuestionType.Text: // Warn: There should be something...
       case QuestionType.Score:

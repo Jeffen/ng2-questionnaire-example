@@ -2,20 +2,20 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
-import { QuestionnaireComponent } from './questionnaire.component';
-import { QuestionModule } from '../question/question.module';
+import { QuestionComponent } from './question.component';
+import { QuestionSharedModule } from './shared/question-shared.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
-    QuestionModule
+    QuestionSharedModule
   ],
   declarations: [
-    QuestionnaireComponent
+    QuestionComponent
   ],
   exports: [
-    QuestionnaireComponent
+    QuestionSharedModule
   ]
 })
-export class QuestionnaireModule { }
+export class QuestionModule { }

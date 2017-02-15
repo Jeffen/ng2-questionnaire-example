@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+
+import { QuestionnaireModel, QuestionnaireState } from '../model/questionnaire.models';
 
 @Component({
   selector: 'app-questionnaire',
@@ -7,9 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class QuestionnaireComponent implements OnInit {
 
-  constructor() { }
+  @Input() questionnaire: QuestionnaireModel;
+  @Output() submitQuestionnaire = new EventEmitter();
+
+  private editable: boolean;
 
   ngOnInit() {
+    this.editable = this.questionnaire && this.questionnaire.state === QuestionnaireState.Created;
   }
 
+  onDeleteQuestion(index: number) {
+    this.questionnaire.questionList.splice(index, 1);
+  }
 }

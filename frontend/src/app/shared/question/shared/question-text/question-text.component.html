@@ -1,0 +1,28 @@
+<p>问答题</p>
+<div *ngIf="!editable">
+    <p>{{question.title}}</p>
+    <div class="ui input">
+        <input placeholder="请输入问题的答案" class="form-control" [(ngModel)]="question.answer" />
+    </div>
+</div>
+
+<div *ngIf="editable && isEditing">
+    <div class="ui input">
+        <input placeholder="请输入问题" class="form-control" [(ngModel)]="question.title" required />
+    </div>
+    <div class="btns">
+        <button (click)="onSave()" class="ui button green">保存</button>
+        <button (click)="onCancel()" class="ui button default">取消</button>
+    </div>
+</div>
+
+<div *ngIf="editable && !isEditing">
+    <p>{{question.title}}</p>
+    <div class="ui input">
+        <input placeholder="请输入问题的答案" class="form-control" disabled="disabled" />
+    </div>
+    <div class="ui group button">
+        <button (click)="onEdit()" class="ui button teal">编辑</button>
+        <button (click)="onDelete()" class="ui button red">删除</button>
+    </div>
+</div>
