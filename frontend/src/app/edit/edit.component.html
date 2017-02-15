@@ -6,7 +6,7 @@
                 <a href="" class="item" data-tab="second">问卷大纲</a>
             </div>
             <div class="ui bottom attached tab active" data-tab="first">
-                <question-select></question-select>
+                <question-select (addQuestionRequest)="onAddQuestion($event)"></question-select>
             </div>
             <div class="ui bottom attached tab" data-tab="second">
                 <questionnaire-outline></questionnaire-outline>

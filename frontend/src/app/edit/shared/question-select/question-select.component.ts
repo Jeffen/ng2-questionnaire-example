@@ -23,7 +23,6 @@ export class QuestionSelectComponent implements OnInit {
   }
 
   onAddQuestion(control: any) {
-    console.log(control.type);
     this.addQuestionRequest.emit(control.type);
   }
 
