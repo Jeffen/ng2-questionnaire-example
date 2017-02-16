@@ -19,7 +19,7 @@ export class EditComponent implements OnInit {
   ngOnInit() {
     $('.menu .item').tab();
     this.questionnaire = {
-      title: 'Questionnaire Initialized',
+      title: '',
       starter: '',
       ending: '',
       state: QuestionnaireState.Created,
@@ -32,14 +32,14 @@ export class EditComponent implements OnInit {
       case QuestionType.Text: // Warn: There should be something...
       case QuestionType.Score:
         this.questionnaire.questionList.push({
-          title: '问题标题',
+          title: '请点击“编辑”按钮来修改问题标题',
           type: type,
           answer: ''
         });
         break;
       case QuestionType.SingleSelect:
        this.questionnaire.questionList.push({
-         title: '问题标题',
+         title: '请点击“编辑”按钮来修改问题标题',
          type: type,
          options: [{'key': 0, 'value': '选项1'}],
          answer: ''
@@ -47,7 +47,7 @@ export class EditComponent implements OnInit {
         break;
       case QuestionType.MultiSelect:
         this.questionnaire.questionList.push({
-          title: '问题标题',
+          title: '请点击“编辑”按钮来修改问题标题',
           type: type,
           options: [{'key': 0, 'value': '选项1'}],
           answer: {}

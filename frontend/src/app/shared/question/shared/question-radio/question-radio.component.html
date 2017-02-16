@@ -1,37 +1,45 @@
 <p>单选题</p>
-<div *ngIf="!editable">
+<div *ngIf="!editable" class="ui form">
     <p>{{question.title}}</p>
-    <div *ngFor="let option of question.options" class="radio">
-
-        <input name="group" type="radio" id="{{option.key}}">{{option.value}}
-
+    <div *ngFor="let option of question.options" class="field">
+        <div class="ui radio checkbox disabled">
+            <input name="group" type="radio" id="{{option.key}}" disabled="disabled">
+            <label>{{option.value}}</label>
+        </div>
     </div>
 </div>
-<div *ngIf="editable && isEditing">
-    <input placeholder="请输入问题" class="form-control" [(ngModel)]="question.title" required />
-    <div class="row pt-20" *ngFor="let option of question.options; let i=index">
-        <div class="col-lg-10">
-            <input placeholder="请填写选项" class="form-control" [(ngModel)]="option.value" type="text" />
+<div *ngIf="editable && isEditing" class="ui grid">
+    <div class="fourteen wide column">
+        <div class="ui input fluid">
+            <input placeholder="请输入问题" class="form-control" [(ngModel)]="question.title" required />
         </div>
-        <div class="col-lg-2">
+    </div>
+    <div class="row" *ngFor="let option of question.options; let i=index">
+        <div class="ten wide column">
+            <div class="ui input fluid">
+                <input placeholder="请填写选项" class="form-control" [(ngModel)]="option.value" type="text" />
+            </div>
+        </div>
+        <div class="two wide column">
             <span *ngIf="question.options.length > 1" class="del-icon" (click)="onDeleteOption(i)">X</span>
         </div>
     </div>
-    <div class="btns">
-        <button (click)="onSave()" class="btn btn-default">保存</button>
-        <button (click)="onAddOption()" class="btn btn-default">添加选项</button>
-        <button (click)="onCancel()" class="btn btn-default">取消</button>
+    <div class="btns"  style="margin-bottom: 10px;">
+        <button (click)="onSave()" class="ui button basic blue">保存</button>
+        <button (click)="onAddOption()" class="ui button basic">添加选项</button>
+        <button (click)="onCancel()" class="ui button basic">取消</button>
     </div>
 </div>
-<div *ngIf="editable && !isEditing">
+<div *ngIf="editable && !isEditing" class="ui form">
     <p>{{question.title}}</p>
-    <div *ngFor="let option of question.options" class="radio disabled">
-
-        <input name="group" type="radio" id="{{option.key}}" disabled="disabled">{{option.value}}
-
+    <div *ngFor="let option of question.options" class="field">
+        <div class="ui radio checkbox disabled">
+            <input name="group" type="radio" id="{{option.key}}" disabled="disabled">
+            <label>{{option.value}}</label>
+        </div>
     </div>
     <div class="btns">
-        <button (click)="onEdit()" class="btn btn-default">编辑</button>
-        <button (click)="onDelete()" class="btn btn-default">删除</button>
+        <button (click)="onEdit()" class="ui button basic">编辑</button>
+        <button (click)="onDelete()" class="ui button basic">删除</button>
     </div>
 </div>

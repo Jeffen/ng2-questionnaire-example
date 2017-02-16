@@ -11,9 +11,6 @@ import { QuestionSharedModule } from './shared/question-shared.module';
     FormsModule,
     QuestionSharedModule
   ],
-  declarations: [
-    QuestionComponent
-  ],
   exports: [
     QuestionSharedModule
   ]

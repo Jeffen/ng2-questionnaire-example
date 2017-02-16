@@ -2,28 +2,30 @@
 
 <div *ngIf="!editable">
     <p>{{question.title}}</p>
-    <p class="range-field">
+    <div class="range-field ui range">
         <label>分值：{{question.answer}}</label>
         <input type="range" [(ngModel)]="question.answer" min="0" max="100" />
-    </p>
+    </div>
 </div>
 
 <div *ngIf="editable && isEditing">
-    <input placeholder="请输入问题" class="form-control" [(ngModel)]="question.title" required />
-    <div class="btns">
-        <button (click)="onSave()" class="btn">保存</button>
-        <button (click)="onCancel()" class="btn">取消</button>
+    <div class="ui input fluid" style="margin-bottom: 10px;">
+        <input placeholder="请输入问题" class="form-control" [(ngModel)]="question.title" required />
+    </div>
+    <div class="btns" style="margin-bottom: 10px;">
+        <button (click)="onSave()" class="ui button basic blue">保存</button>
+        <button (click)="onCancel()" class="ui button basic">取消</button>
     </div>
 </div>
 
 <div *ngIf="editable && !isEditing">
     <p>{{question.title}}</p>
-    <p class="range-field">
-        <label>分值：50</label>
-        <input type="range" vaule="50" min="0" max="100" disabled="disabled" />
-    </p>
+    <div class="range-field ui input" style="margin-bottom: 10px;">
+        <label style="margin-right: 10px; top: 10px; position: relative;">分值：{{range.value}}</label>
+        <input type="range" vaule="50" min="0" max="100" disabled="disabled" #range />
+    </div>
     <div class="btns">
-        <button (click)="onEdit()" class="btn btn-default">编辑</button>
-        <button (click)="onDelete()" class="btn btn-default">删除</button>
+        <button (click)="onEdit()" class="ui button basic">编辑</button>
+        <button (click)="onDelete()" class="ui button basic">删除</button>
     </div>
 </div>

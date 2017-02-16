@@ -8,7 +8,6 @@ export class QuestionComponent implements OnInit {
   editable = false;
   isEditing = false;
   deleteQuestionRequest: EventEmitter<any> = new EventEmitter();
-  constructor() { }
 
   ngOnInit() {
     this.copyQuestion();
