@@ -9,7 +9,7 @@
                 <question-select (addQuestionRequest)="onAddQuestion($event)"></question-select>
             </div>
             <div class="ui bottom attached tab" data-tab="second">
-                <questionnaire-outline></questionnaire-outline>
+                <questionnaire-outline [questionnaire]="questionnaire"></questionnaire-outline>
             </div>
         </div>
     </div>

@@ -1,8 +1,11 @@
-<ul *ngIf="questionnaire" class="questionnaire-outline">
-    <li *ngFor="let q of questionnaire.questionList; let i=index">
-        <span>{{(i + 1) + ". " + q.title}}</span>
-        <li>
-</ul>
+<div *ngIf="questionnaire" class="questionnaire-outline ui list">
+    <div *ngIf="questionnaire.questionList.length == 0">
+        问卷暂时还没有问题，可以切换到“添加问题栏”添加题目
+    </div>
+    <div *ngFor="let q of questionnaire.questionList; let i=index" class="item">
+        <h4 class="ui header">{{(i + 1) + ". " + q.title}}</h4>
+    </div>
+</div>
 <div *ngIf="!questionnaire">
     还没有已创建的问卷哦～
 </div>

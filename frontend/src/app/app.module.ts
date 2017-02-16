@@ -9,11 +9,9 @@ import { AboutModule } from './about/about.module';
 import { AdminModule } from './admin/admin.module';
 import { CoreModule } from './core/core.module';
 import { EditModule } from './edit/edit.module';
+import { CenterModule } from './center/center.module';
 
 import { AppComponent } from './app.component';
-import { HomeComponent } from './home/home.component';
-import { EditComponent } from './edit/edit.component';
-
 
 @NgModule({
   declarations: [
@@ -28,7 +26,8 @@ import { EditComponent } from './edit/edit.component';
     AboutModule,
     AdminModule,
     CoreModule,
-    EditModule
+    EditModule,
+    CenterModule
   ],
   providers: [],
   bootstrap: [AppComponent]

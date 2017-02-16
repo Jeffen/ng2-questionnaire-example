@@ -32,7 +32,6 @@ export class EditComponent implements OnInit {
   ngOnInit() {
     $('.menu .item').tab();
     this.id = this.activatedRoute.snapshot.params['id'];
-    console.log('Param ID: ', this.id);
     if (this.id && this.id !== '0') {
       this.questionnaireService.getQuestionnaireById(this.id)
           .subscribe(
@@ -75,12 +74,12 @@ export class EditComponent implements OnInit {
       if (this.id && this.id !== '0') {
         this.questionnaireService.updateQuestionnaire(questionnaire)
             .subscribe(
-              res => console.log('Questionnaire Updated'), error => console.log(error)
+              res => console.log('Questionnaire Updated'), error => console.log(error)// Warn: 此处要替换成跳转命令
             );
       } else {
         this.questionnaireService.addQuestionnaire(questionnaire)
             .subscribe(
-              res => console.log('Questionnaire Created'), error => console.log(error)
+              res => console.log('Questionnaire Created'), error => console.log(error)// Warn: 此处要替换成跳转命令
             );
       }
     }

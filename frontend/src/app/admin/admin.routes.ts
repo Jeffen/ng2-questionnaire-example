@@ -4,6 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AdminComponent } from './admin.component';
 import { AboutRoutes } from '../about/about.routes';
 import { EditRoutes } from '../edit/edit.routes';
+import { CenterRoutes } from '../center/center.route';
 
 const routes: Routes = [
     {
@@ -11,7 +12,8 @@ const routes: Routes = [
         component: AdminComponent,
         children: [
             ...AboutRoutes,
-            ...EditRoutes
+            ...EditRoutes,
+            ...CenterRoutes
         ]
     }
 ];
