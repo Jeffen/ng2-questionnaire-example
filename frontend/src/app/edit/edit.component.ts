@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 
 import { QuestionnaireModel, QuestionnaireState } from '../shared/model/questionnaire.models';
 import { QuestionType } from '../shared/model/question.model';
+import { QuestionnaireService } from '../core/service/questionnaire.service';
 
 declare var $: any;
 @Component({
@@ -13,11 +15,11 @@ export class EditComponent implements OnInit {
   private questionnaire: QuestionnaireModel;
   private id: string;
 
-  constructor() {
-  }
-
-  ngOnInit() {
-    $('.menu .item').tab();
+  constructor(
+    private questionnaireService: QuestionnaireService,
+    private router: Router,
+    private activatedRouter: ActivatedRoute
+  ) {
     this.questionnaire = {
       title: '',
       starter: '',
@@ -25,6 +27,18 @@ export class EditComponent implements OnInit {
       state: QuestionnaireState.Created,
       questionList: []
     };
+  }
+
+  ngOnInit() {
+    $('.menu .item').tab();
+    this.id = this.activatedRouter.snapshot.params['id'];
+    if (this.id && this.id !== '0') {
+      this.questionnaireService.getQuestionnaireById(this.id)
+          .subscribe(
+            questionnaire => this.questionnaire = questionnaire,
+            error => console.log(error)
+          );
+    }
   }
 
   onAddQuestion(type: QuestionType) {

@@ -28,7 +28,7 @@ import { EditComponent } from './edit/edit.component';
     AboutModule,
     AdminModule,
     CoreModule,
-    EditModule 
+    EditModule
   ],
   providers: [],
   bootstrap: [AppComponent]
