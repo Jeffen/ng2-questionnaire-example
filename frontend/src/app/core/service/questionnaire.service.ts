@@ -11,7 +11,7 @@ export class QuestionnaireService {
   constructor(private http: Http) { }
 
   private handleError(error: Response) {
-    console.log(error);
+    console.log('Error Info: ', error);
     return Observable.throw(error.json().error || 'Server error');
   }
 
@@ -23,7 +23,7 @@ export class QuestionnaireService {
 
   getQuestionnaire() {
     return this.http.get(SITE_HOST_URL + 'questionnaire')
-                    .map(res => <QuestionnaireModel>res.json().data)
+                    .map(res => <QuestionnaireModel[]>res.json().data)
                     .catch(this.handleError);
   }
 
@@ -38,7 +38,7 @@ export class QuestionnaireService {
   }
 
   deleteQuestionnaire(id: string) {
-    return this.http.get(SITE_HOST_URL + 'questionnaire/delete' + id)
+    return this.http.get(SITE_HOST_URL + 'questionnaire/delete/' + id)
                .map(res => <Object>res.json().data)
                .catch(this.handleError);
   }
@@ -53,8 +53,8 @@ export class QuestionnaireService {
                .catch(this.handleError);
   }
 
-  publishQestionnaire(questionnaire: QuestionnaireModel) {
-    return this.http.get(SITE_HOST_URL + 'questionnaire/publish')
+  publishQestionnaire(id: string) {
+    return this.http.get(SITE_HOST_URL + 'questionnaire/publish/' + id)
                .map(res => <QuestionnaireModel>res.json().data)
                .catch(this.handleError);
   }

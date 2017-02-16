@@ -21,4 +21,9 @@ export class QuestionnaireComponent implements OnInit {
   onDeleteQuestion(index: number) {
     this.questionnaire.questionList.splice(index, 1);
   }
+
+  onSubmit() {
+    this.submitQuestionnaire.emit(this.questionnaire);
+    console.log('Submit button hit', this.questionnaire);
+  }
 }

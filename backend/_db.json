@@ -1,1 +1,64 @@
-{}
+{
+  "questionnaires": [
+    {
+      "title": "测试一下",
+      "starter": "欢迎",
+      "ending": "感谢",
+      "state": 0,
+      "questionList": [
+        {
+          "title": "请点击“编辑”按钮来修改问题标题",
+          "type": 0,
+          "answer": ""
+        },
+        {
+          "title": "请点击“编辑”按钮来修改问题标题",
+          "type": 1,
+          "options": [
+            {
+              "key": 0,
+              "value": "选项1"
+            },
+            {
+              "key": 1,
+              "value": "22"
+            },
+            {
+              "key": 2,
+              "value": "33"
+            }
+          ],
+          "answer": ""
+        },
+        {
+          "title": "请点击“编辑”按钮来修改问题标题",
+          "type": 2,
+          "options": [
+            {
+              "key": 0,
+              "value": "选项1"
+            },
+            {
+              "key": 1,
+              "value": "222"
+            },
+            {
+              "key": 2,
+              "value": "3333"
+            }
+          ],
+          "answer": {
+            "selected": []
+          }
+        },
+        {
+          "title": "请点击“编辑”按钮来修改问题标题",
+          "type": 3,
+          "answer": ""
+        }
+      ],
+      "id": "72bc1bd0-f48f-11e6-8f0a-0dafd7437882",
+      "createDate": "2/16/2017"
+    }
+  ]
+}

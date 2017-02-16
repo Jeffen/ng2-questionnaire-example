@@ -18,7 +18,7 @@ export class EditComponent implements OnInit {
   constructor(
     private questionnaireService: QuestionnaireService,
     private router: Router,
-    private activatedRouter: ActivatedRoute
+    private activatedRoute: ActivatedRoute
   ) {
     this.questionnaire = {
       title: '',
@@ -31,12 +31,13 @@ export class EditComponent implements OnInit {
 
   ngOnInit() {
     $('.menu .item').tab();
-    this.id = this.activatedRouter.snapshot.params['id'];
+    this.id = this.activatedRoute.snapshot.params['id'];
+    console.log('Param ID: ', this.id);
     if (this.id && this.id !== '0') {
       this.questionnaireService.getQuestionnaireById(this.id)
           .subscribe(
-            questionnaire => this.questionnaire = questionnaire,
-            error => console.log(error)
+            res => this.questionnaire = res,
+            error => console.log('Error: ', error)
           );
     }
   }
@@ -69,5 +70,19 @@ export class EditComponent implements OnInit {
           break;
     }
   }
-
+  onSubmitQuestionnaire(questionnaire: QuestionnaireModel) {
+    if (questionnaire.state === QuestionnaireState.Created) {
+      if (this.id && this.id !== '0') {
+        this.questionnaireService.updateQuestionnaire(questionnaire)
+            .subscribe(
+              res => console.log('Questionnaire Updated'), error => console.log(error)
+            );
+      } else {
+        this.questionnaireService.addQuestionnaire(questionnaire)
+            .subscribe(
+              res => console.log('Questionnaire Created'), error => console.log(error)
+            );
+      }
+    }
+  }
 }

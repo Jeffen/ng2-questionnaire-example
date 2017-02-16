@@ -14,6 +14,6 @@
         </div>
     </div>
     <div class="eleven wide column questionnaire-container">
-        <app-questionnaire [(questionnaire)]="questionnaire"></app-questionnaire>
+        <app-questionnaire [(questionnaire)]="questionnaire" (submitQuestionnaire)="onSubmitQuestionnaire($event)"></app-questionnaire>
     </div>
 </div>
