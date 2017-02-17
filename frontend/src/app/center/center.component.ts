@@ -41,7 +41,6 @@ export class CenterComponent implements OnInit {
     this.questionnaireService.deleteQuestionnaire(this.selectedQuestionnaire.id)
         .subscribe(
           res => {
-            console.log('Successfully Deleted');
             this.questionnaires.splice(this.key, 1);
             this.selectedQuestionnaire = null;
           }, err => console.log(err)
@@ -50,10 +49,17 @@ export class CenterComponent implements OnInit {
   onPublish() {
     this.questionnaireService.publishQestionnaire(this.selectedQuestionnaire.id)
       .subscribe(res => {
-        console.log('Successfully Published');
         this.selectedQuestionnaire.state = QuestionnaireState.Published;
         this.questionnaires[this.key] = Object.assign({}, this.selectedQuestionnaire);
         this.cd.detectChanges();
       }, err => console.log(err));
+  }
+  onFinish() {
+    this.questionnaireService.finishQuestionnaire(this.selectedQuestionnaire.id)
+        .subscribe(res => {
+          this.selectedQuestionnaire.state = QuestionnaireState.Finished;
+          this.questionnaires[this.key] = Object.assign({}, this.selectedQuestionnaire);
+          this.cd.detectChanges();
+        }, err => console.log(err));
   }
 }
