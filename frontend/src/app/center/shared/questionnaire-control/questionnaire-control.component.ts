@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 import { QuestionModel } from '../../../shared/model/question.model';
 declare var $: any;
@@ -15,12 +15,12 @@ export class QuestionnaireControlComponent implements OnInit {
   @Output() onPublishRequest = new EventEmitter();
   @Output() onFinishRequest = new EventEmitter();
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private ar: ActivatedRoute) { }
 
   ngOnInit() {
   }
   onPreview() {
-    
+    this.router.navigate(['publish', this.questionnaire['id'], {'type': 'preview'}]);
   }
   onEdit() {
     const URL = 'admin/edit';

@@ -10,6 +10,7 @@ import { AdminModule } from './admin/admin.module';
 import { CoreModule } from './core/core.module';
 import { EditModule } from './edit/edit.module';
 import { CenterModule } from './center/center.module';
+import { PublishModule } from './publish/publish.module';
 
 import { AppComponent } from './app.component';
 
@@ -27,7 +28,8 @@ import { AppComponent } from './app.component';
     AdminModule,
     CoreModule,
     EditModule,
-    CenterModule
+    CenterModule,
+    PublishModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -23,7 +23,6 @@ export class CenterComponent implements OnInit {
     this.questionnaireService.getQuestionnaire()
         .subscribe(
           res => {
-            console.log(res);
             if (res.length !== 0) {
               this.questionnaires = res;
               this.isEmpty = false;
