@@ -82,6 +82,7 @@ export class EditComponent implements OnInit {
               res => console.log('Questionnaire Created'), error => console.log(error)// Warn: 此处要替换成跳转命令
             );
       }
+      this.router.navigate(['admin', 'center']);
     }
   }
 }

@@ -1,3 +1,21 @@
-<p>
-  questionnaire-detail works!
-</p>
+<table *ngIf="questionnaire" class="ui very table">
+    <tr>
+        <td>问卷标题：</td>
+        <td>{{questionnaire.title}}</td>
+    </tr>
+    <tr>
+        <td>问卷简介：</td>
+        <td>{{questionnaire.starter}}</td>
+    </tr>
+    <tr>
+        <td>问题总数：</td>
+        <td>{{questionnaire.questionList.length}}</td>
+    </tr>
+    <tr>
+        <td>创建时间：</td>
+        <td>{{questionnaire.createDate}}</td>
+    </tr>
+</table>
+<div *ngIf="!questionnaire">
+    <p>暂时还没有需要预览的问卷，可以点击左侧问卷列表选择～</p>
+</div>

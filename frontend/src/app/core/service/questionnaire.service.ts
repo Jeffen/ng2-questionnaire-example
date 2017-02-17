@@ -22,7 +22,7 @@ export class QuestionnaireService {
   }
 
   getQuestionnaire() {
-    return this.http.get(SITE_HOST_URL + 'questionnaire')
+    return this.http.get(SITE_HOST_URL + 'questionnaires')
                     .map(res => <QuestionnaireModel[]>res.json().data)
                     .catch(this.handleError);
   }
@@ -55,6 +55,11 @@ export class QuestionnaireService {
 
   publishQestionnaire(id: string) {
     return this.http.get(SITE_HOST_URL + 'questionnaire/publish/' + id)
+               .map(res => <QuestionnaireModel>res.json().data)
+               .catch(this.handleError);
+  }
+  finishQuestionnaire(id: string) {
+    return this.http.get(SITE_HOST_URL + 'questionnaire/finish/' + id)
                .map(res => <QuestionnaireModel>res.json().data)
                .catch(this.handleError);
   }

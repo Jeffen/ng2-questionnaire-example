@@ -1,3 +1,43 @@
-<p>
-  questionnaire-control works!
-</p>
+<div class="ui grid" *ngIf="questionnaire">
+    <div class="row">
+        <div class="" style="margin: 0 auto;">
+            <button type="button" class="ui button basic" (click)="onPreview()">
+            <i class="i icon unhide"></i>
+            <div class="control-text">预览</div>
+        </button>
+            <button type="button" *ngIf="questionnaire.state===0" class="ui button basic" (click)="onEdit()">
+            <i class="i icon text edit"></i>
+            <div class="control-text">编辑</div>
+        </button>
+            <button type="button" *ngIf="questionnaire.state===0" class="ui button basic" (click)="onPublish()">
+            <i class="i icon leanpub"></i>
+            <div class="control-text">发布</div>
+        </button>
+            <button type="button" *ngIf="questionnaire.state===1" class="ui button basic">
+            <i class="i icon archive"></i>
+            <div class="control-text">结束</div>
+        </button>
+            <button type="button" class="ui button basic red" (click)="onDeleteConfirm()">
+            <i class="i icon trash outline"></i>
+            <div class="control-text">删除</div>
+        </button>
+        </div>
+    </div>
+</div>
+
+<div class="ui basic modal">
+    <div class="ui icon header">
+        <i class="archive icon"></i> Archive Old Messages
+    </div>
+    <div class="content">
+        <p>Your inbox is getting full, would you like us to enable automatic archiving of old messages?</p>
+    </div>
+    <div class="actions">
+        <div class="ui red basic cancel inverted button">
+            <i class="remove icon"></i> No
+        </div>
+        <div class="ui green ok inverted button" (click)="onDelete()">
+            <i class="checkmark icon"></i> Yes
+        </div>
+    </div>
+</div>

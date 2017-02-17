@@ -1,3 +1,33 @@
-<p>
-  center works!
-</p>
+<div class="ui container" style="margin-top:20px;">
+    <div class="center-container" *ngIf="isEmpty">
+        <div class="show-empty">
+            尚未创建任何问卷，马上<a [routerLink]="['/admin/edit/0']" [routerLinkActive]="['router-link-active']" [routerLinkActiveOptions]="{exact:true}">创建一个</a>吧！
+        </div>
+    </div>
+    <div class="ui grid" *ngIf="!isEmpty">
+        <div class="ten wide column">
+            <div class="ui segment">
+                <div class="ui header">问卷列表</div>
+                <div class="ui vertical menu fluid">
+                    <a class="item questionnaire-item" *ngFor="let item of questionnaires;let i=index;" (click)="onSelect(item, i)" [class.active]="item===selectedQuestionnaire">
+                        <app-questionnaire-item [questionnaire]="item"></app-questionnaire-item>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="six wide column">
+            <div class="ui segment">
+                <div class="ui header">问卷详情</div>
+                <div class="content">
+                    <app-questionnaire-detail [questionnaire]="selectedQuestionnaire"></app-questionnaire-detail>
+                </div>
+            </div>
+            <div class="ui segment">
+                <div class="ui header">问卷管理</div>
+                <div class="content">
+                    <app-questionnaire-control [questionnaire]="selectedQuestionnaire" (onDeleteRequest)="onDelete()" (onPublishRequest)="onPublish()"></app-questionnaire-control>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

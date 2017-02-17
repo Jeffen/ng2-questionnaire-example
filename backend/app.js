@@ -60,6 +60,12 @@ server.get('/questionnaire/publish/:id', (req, res) => {
     item.assign({ state: 1 }).value();
     res.json({ 'success': true, data: item });
 });
+// 回收问卷
+server.get('/questionnaire/finish/:id', (req, res) => {
+    const item = db('questionnaires').chain().find({ id: req.params.id });
+    item.assign({ state: 2 }).value();
+    res.json({ 'success': true, data: item });
+});
 
 //启动服务，并监听5000端口
 server.listen(5000, () => {

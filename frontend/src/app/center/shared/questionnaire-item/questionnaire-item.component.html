@@ -1,3 +1,6 @@
-<p>
-  questionnaire-item works!
-</p>
+{{questionnaire.title}}
+<span class="ui right floated header" style="
+    font-weight: 200;
+    font-size: 1em;
+">{{questionnaire.createDate | date}}</span>
+<span class="ui label mini" [ngClass]="stateClass" style="margin-left: 5px;">{{stateText}}</span>
