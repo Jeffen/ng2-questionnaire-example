@@ -1,6 +1,6 @@
 <div class="ui container">
-    <div class="ui content">
-        This is a preview version questionnaire!
+    <div class="ui tertiary segment" *ngIf="preview">
+        以下是一份预览版本的问卷。
     </div>
     <div class="ui segment">
         <app-questionnaire [questionnaire]="questionnaire"></app-questionnaire>

@@ -14,9 +14,14 @@ server.use(bodyParser.json());
 const dbfile = process.env.prod === '1' ? 'db.json' : '_db.json';
 //创建一个lowdb实例
 const db = low(dbfile, { storage });
-//路由配置
-const router = jsonServer.router(dbfile);
-server.use('/api', router);
+
+var md5 = function(str) {
+    return crypto
+        .createHash('md5')
+        .update(str.toString())
+        .digest('hex');
+};
+
 
 //添加新问卷
 server.post('/questionnaire/add', (req, res) => {
@@ -67,6 +72,66 @@ server.get('/questionnaire/finish/:id', (req, res) => {
     res.json({ 'success': true, data: item });
 });
 
+// 获取用户
+server.get('/user/:username', function(req, res) {
+    var user = db('user')
+        .find({
+            username: req.params.username
+        });
+    res.json({
+        success: true,
+        data: {
+            username: user.username,
+            createDate: user.createDate
+        }
+    });
+});
+//User Registration
+server.post('/user/add', function(req, res) {
+    var item = req.body;
+    var user = db('user')
+        .find({
+            username: item.username
+        });
+    if (user) {
+        res.json({
+            success: false,
+            message: '"' + item.username + '" is exists'
+        });
+    } else {
+        item.password = md5(item.password);
+        item.createDate = new Date().toLocaleDateString();
+        db('user')
+            .push(item)
+            .then(function() {
+                res.json({
+                    success: true
+                });
+            });
+    }
+});
+//Login
+server.post('/login', function(req, res) {
+    var data = req.body || {};
+    var username = data.username;
+    var user = db('user')
+        .find({
+            username: username
+        });
+    if (user && user.password === md5(data.password)) {
+        res.json({
+            success: true
+        });
+    } else {
+        res.json({
+            success: false,
+            message: 'Username or password error'
+        });
+    }
+});
+//路由配置
+const router = jsonServer.router(dbfile);
+server.use('/api', router);
 //启动服务，并监听5000端口
 server.listen(5000, () => {
     console.log('Server is running at ', 5000, dbfile);
