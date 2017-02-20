@@ -4,7 +4,7 @@ import { RouterModule } from '@angular/router';
 
 import { NavbarComponent } from './navbar/navbar.component';
 import { QuestionnaireService } from './service/questionnaire.service';
-
+import { UserService, LoginService, RegisterService, AuthGuard } from './service/index';
 @NgModule({
   imports: [
     CommonModule,
@@ -15,7 +15,11 @@ import { QuestionnaireService } from './service/questionnaire.service';
   ],
   exports: [NavbarComponent],
   providers: [
-    QuestionnaireService
+    QuestionnaireService,
+    UserService,
+    LoginService,
+    RegisterService,
+    AuthGuard
   ]
 })
 export class CoreModule {

@@ -1,15 +1,24 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output } from '@angular/core';
+import { FieldBase } from './field-base';
+import { FormGroup } from '@angular/forms';
 
 @Component({
-  selector: 'app-field',
+  selector: 'field',
   templateUrl: './field.component.html',
   styleUrls: ['./field.component.css']
 })
-export class FieldComponent implements OnInit {
+export class FieldComponent {
 
-  constructor() { }
+  @Input() field: FieldBase<any>;
+  @Input() form: FormGroup;
 
-  ngOnInit() {
+  get isValid() {
+    return this.form.controls[this.field.key].valid;
+  }
+
+  get isEmpty() {
+    const errors = this.form.controls[this.field.key].errors || {};
+    return errors['empty'];
   }
 
 }

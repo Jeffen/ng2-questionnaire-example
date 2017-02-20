@@ -11,6 +11,7 @@ import { CoreModule } from './core/core.module';
 import { EditModule } from './edit/edit.module';
 import { CenterModule } from './center/center.module';
 import { PublishModule } from './publish/publish.module';
+import { UserModule } from './user/user.module';
 
 import { AppComponent } from './app.component';
 
@@ -29,7 +30,8 @@ import { AppComponent } from './app.component';
     CoreModule,
     EditModule,
     CenterModule,
-    PublishModule
+    PublishModule,
+    UserModule
   ],
   providers: [],
   bootstrap: [AppComponent]

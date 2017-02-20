@@ -1,5 +1,9 @@
 import { RouterModule, Route } from '@angular/router';
 
-export const CenterRoutes: Route[] = [
+import { LoginComponent } from './shared/login/login.component';
+import { RegisterComponent } from './shared/register/register.component';
 
+export const UserRoutes: Route[] = [
+    { path: 'login', component: LoginComponent },
+    { path: 'register', component: RegisterComponent }
 ];
