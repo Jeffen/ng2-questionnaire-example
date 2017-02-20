@@ -4,6 +4,7 @@ const bodyParser = require('body-parser');
 const uuid = require('node-uuid');
 const low = require('lowdb');
 const storage = require('lowdb/file-async');
+const crypto = require('crypto');
 //创建一个Express服务器
 const server = jsonServer.create();
 //使用json-server 默认选择的中间件(logger、static、cors和no-cache)

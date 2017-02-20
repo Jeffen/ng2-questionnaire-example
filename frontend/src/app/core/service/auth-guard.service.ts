@@ -12,7 +12,7 @@ export class AuthGuard implements CanActivate {
         if (this.userService.isLogin) {
             return true;
         }
-        this.route.navigate(['/admin/login'], {queryParams: { returnUrl: state.url }});
+        this.route.navigate(['/login'], {queryParams: { returnUrl: state.url }});
         return false;
     }
 }
